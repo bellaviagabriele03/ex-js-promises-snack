@@ -100,3 +100,33 @@ operazione("moltiplicazione", 3, 1)
     .then(result => operazione("somma", result, 10))
     .then(result => console.log(result))
     .catch(err => console.log(err))
+
+
+//test 3 
+// Livello 3 – Async reali (simulati)
+// 🧩 Esercizio 5: Finta API
+
+// Crea una funzione fakeFetch(url) che:
+
+// dopo 1–3 secondi
+// restituisce dati finti (tipo { nome: "Mario" })
+
+// 👉 Usa Math.random() per il tempo
+
+
+function fakeFetch(url) {
+    const timer = Math.floor(Math.random() * 3) + 1;
+
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve({
+                url,
+                data: { nome: "Mario", cognome: "Rossi", eta: 20 }
+            }, console.log(`tempo di risposta: ${timer} sec`))
+        }, timer * 1000)
+    })
+}
+
+
+fakeFetch(`link...`)
+    .then(resp => console.log(resp))
