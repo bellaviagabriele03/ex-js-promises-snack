@@ -18,4 +18,23 @@ function getPostTitle(id) {
 
 getPostTitle(1)
     .then(obj => console.log(obj))
-    .catch(error => console.error(error))
+    .catch(error => console.error(error));
+
+
+
+
+function lanciaDado() {
+    return new Promise((resolve, rejected) => {
+        console.log("Sto lanciando il dado...")
+
+        setTimeout(() => {
+            const dado = Math.floor(Math.random() * 6) + 1;
+            resolve(dado)
+            rejected("errore")
+        }, 3000)
+    })
+}
+
+lanciaDado().then(dado => console.log("numero uscito:", dado)).catch(message => console.log(message))
+
+
