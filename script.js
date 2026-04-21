@@ -38,3 +38,65 @@ function lanciaDado() {
 lanciaDado().then(dado => console.log("numero uscito:", dado)).catch(message => console.log(message))
 
 
+
+//test
+
+// Livello 1 – Basi delle Promise
+// 🧩 Esercizio 1: Creare una Promise semplice
+
+// Crea una funzione che restituisce una Promise che:
+
+// dopo 2 secondi → risolve con "Operazione completata"
+// usa resolve
+
+function test1() {
+    return new Promise((resolve, reject) => {
+
+        setTimeout(() => {
+            if ((Math.random()) > 0.5) {
+                resolve("operazione completata !")
+            } else {
+                reject("qualcosa è andato storto !")
+            }
+        }, 2000)
+    })
+}
+
+test1()
+    .then(mess => console.log(mess))
+    .catch(err => console.log(err))
+
+
+//test 2
+// risultato finale deve essere stampato
+// partenza: 5
+// operazioni:
+// ×2 → -3 → +10
+
+function operazione(operazione, n1, n2) {
+    let result = null;
+    return new Promise((resolve, reject) => {
+        if (operazione === "moltiplicazione") {
+            result = n1 * n2
+            setTimeout(() => {
+                resolve(result)
+            }, 2000)
+        } else if (operazione === "somma") {
+            result = n1 + n2
+            setTimeout(() => {
+                resolve(result)
+            }, 2000)
+        } else {
+            reject("indica operazione e numeri !")
+        }
+
+    })
+}
+
+
+
+operazione("moltiplicazione", 3, 1)
+    .then(result => operazione("somma", result, -3))
+    .then(result => operazione("somma", result, 10))
+    .then(result => console.log(result))
+    .catch(err => console.log(err))
